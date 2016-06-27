@@ -33,6 +33,21 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
             config :ecto_cursor_pagination,
               per_page: 15
 
+## Example controller Action
+
+    def index(conn, params) do
+      last_seen_param = Map.get(params, "last_seen_id", "")
+      direction_param = Map.get(params, "dir", "")
+
+      query = Todo
+              |> filter_by_uuid("user_id", params["user_id"])
+              |> filter_by_string("name", params["name"])
+              |> filter_by_string("type", params["type"])
+      query = Ecto.CursorPagination.paginate(query, last_seen_param, direction_param)
+
+      render(conn, "index.json", data: MyApp.Repo.all(query))
+    end
+
 ## Contributing
 
 Pull requests are welcomed. Before submitting your pull request, please run:
