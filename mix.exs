@@ -2,31 +2,54 @@ defmodule EctoCursorPagination.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :ecto_cursor_pagination,
-     version: "0.1.0",
-     elixir: "~> 1.3",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps()]
+    [
+      app: :ecto_cursor_pagination,
+      build_embedded: Mix.env == :prod,
+      deps: deps(),
+      dialyzer: [
+        plt_add_deps: true,
+        plt_file: ".local.plt"
+      ],
+      description: "Ecto Library that does enable cursor pagination.",
+      docs: [extras: ["README.md"]],
+      elixir: "~> 1.3",
+      homepage_url: "https://github.com/br/ecto_cursor_pagination",
+      name: "Ecto Cursor Pagination",
+      package: package(),
+      preferred_cli_env: [
+        "coveralls": :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ],
+      source_url: "https://github.com/br/ecto_cursor_pagination",
+      start_permanent: Mix.env == :prod,
+      test_coverage: [tool: ExCoveralls],
+      version: "0.1.0"
+    ]
   end
 
-  # Configuration for the OTP application
-  #
-  # Type "mix help compile.app" for more information
   def application do
     [applications: [:logger]]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      {:credo,       "~> 0.4",  only: [:dev]},
+      {:dialyxir,    "~> 0.3",  only: [:dev]},
+      {:earmark,     "~> 0.1",  only: [:dev]},
+      {:ecto,        "~> 2.0"},
+      {:excoveralls, "~> 0.5",  only: [:test]},
+      {:ex_doc,      "~> 0.12", only: [:dev]},
+    ]
+  end
+
+  defp package do
+    [
+      files: ["lib", "mix.exs", "README*", "LICENSE*"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/br/ecto_cursor_pagination"},
+      maintainers: ["John Kelly"]
+    ]
   end
 end
