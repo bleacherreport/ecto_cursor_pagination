@@ -5,6 +5,7 @@ Cursor Pagination
 Good Explanation of why cursor pagination is superior to offset/limit:
 
 [http://blog.novatec-gmbh.de/art-pagination-offset-vs-value-based-paging/](http://blog.novatec-gmbh.de/art-pagination-offset-vs-value-based-paging/)
+[https://www.percona.com/files/presentations/ppc2009/PPC2009_mysql_pagination.pdf](https://www.percona.com/files/presentations/ppc2009/PPC2009_mysql_pagination.pdf)
 
 ## Installation
 
