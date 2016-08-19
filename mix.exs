@@ -13,7 +13,7 @@ defmodule EctoCursorPagination.Mixfile do
       description: "Ecto Library that does enable cursor pagination.",
       docs: [extras: ["README.md"]],
       elixir: "~> 1.3",
-      homepage_url: "https://github.com/br/ecto_cursor_pagination",
+      homepage_url: "https://github.com/bleacherreport/ecto_cursor_pagination",
       name: "Ecto Cursor Pagination",
       package: package(),
       preferred_cli_env: [
@@ -22,7 +22,7 @@ defmodule EctoCursorPagination.Mixfile do
         "coveralls.post": :test,
         "coveralls.html": :test
       ],
-      source_url: "https://github.com/br/ecto_cursor_pagination",
+      source_url: "https://github.com/bleacherreport/ecto_cursor_pagination",
       start_permanent: Mix.env == :prod,
       test_coverage: [tool: ExCoveralls],
       version: "0.1.0"
@@ -47,8 +47,8 @@ defmodule EctoCursorPagination.Mixfile do
   defp package do
     [
       files: ["lib", "mix.exs", "README*", "LICENSE*"],
-      licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/br/ecto_cursor_pagination"},
+      licenses: ["Apache 2.0"],
+      links: %{"GitHub" => "https://github.com/bleacherreport/ecto_cursor_pagination"},
       maintainers: ["John Kelly"]
     ]
   end

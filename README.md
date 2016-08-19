@@ -50,10 +50,10 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
     end
 
 ## Contributing
+Before submitting your pull request, please run:
+  * `mix credo --strict`
+  * `mix coveralls`
+  * `mix dialyzer`
 
-Pull requests are welcomed. Before submitting your pull request, please run:
-* `mix credo --strict`
-* `mix coveralls`
-* `mix dialyzer`
-
-If there are any issues they should be corrected before submitting a pull request
+Please squash your pull request's commits into a single commit with a message and
+detailed description explaining the commit.
