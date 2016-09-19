@@ -12,7 +12,7 @@ defmodule Ecto.CursorPagination do
   @doc """
   Efficiently returns a maximum of `per_page` configured results.
 
-  Assumes ids are integers and incremented as inserted in order.
+  Assumes cursor_ids are integers and incremented as inserted in order.
 
   It returns an Ecto Query that is the combination
   of the inputted query and the cursor pagination.
@@ -25,21 +25,23 @@ defmodule Ecto.CursorPagination do
 
   def paginate(query, last_seen_id, "prev") do
     query
-    |> order_by(desc: :id)
-    |> where([q], q.id < ^last_seen_id)
+    |> order_by(desc: ^cursor_id)
+    |> where([q], field(q, ^cursor_id) < ^last_seen_id)
     |> limit(@per_page)
   end
 
   def paginate(query, last_seen_id, "next") do
     query
-    |> order_by(asc: :id)
-    |> where([q], q.id > ^last_seen_id)
+    |> order_by(asc: ^cursor_id)
+    |> where([q], field(q, ^cursor_id) > ^last_seen_id)
     |> limit(@per_page)
   end
 
   def paginate(query, _, _) do
     query
-    |> order_by(desc: :id)
+    |> order_by(desc: ^cursor_id)
     |> limit(@per_page)
   end
+
+  defp cursor_id, do: Application.fetch_env!(:ecto_cursor_pagination, :cursor_id)
 end

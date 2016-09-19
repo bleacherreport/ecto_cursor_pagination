@@ -32,7 +32,8 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
     * Add to your `config/config.exs` or each `config/env_name.exs`:
 
             config :ecto_cursor_pagination,
-              per_page: 15
+              per_page: 15,
+              cursor_id: :id
 
 ## Example controller Action
 
