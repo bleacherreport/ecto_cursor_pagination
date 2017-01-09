@@ -10,7 +10,7 @@ defmodule EctoCursorPagination.Mixfile do
         plt_add_deps: true,
         plt_file: ".local.plt"
       ],
-      description: "Ecto Library that does enable cursor pagination.",
+      description: "Ecto Library for cursor pagination.",
       docs: [extras: ["README.md"]],
       elixir: "~> 1.3",
       homepage_url: "https://github.com/bleacherreport/ecto_cursor_pagination",
@@ -25,7 +25,7 @@ defmodule EctoCursorPagination.Mixfile do
       source_url: "https://github.com/bleacherreport/ecto_cursor_pagination",
       start_permanent: Mix.env == :prod,
       test_coverage: [tool: ExCoveralls],
-      version: "0.1.0"
+      version: "0.1.1"
     ]
   end
 

@@ -18,7 +18,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
     ```elixir
     def deps do
-      [{:ecto_cursor_pagination, "~> 0.1.0"}]
+      [{:ecto_cursor_pagination, "~> 0.1.1"}]
     end
     ```
 
