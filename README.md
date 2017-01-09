@@ -1,4 +1,7 @@
 # Ecto.CursorPagination
+[![Hex pm](http://img.shields.io/hexpm/v/ecto_cursor_pagination.svg?style=flat)](https://hex.pm/packages/ecto_cursor_pagination)
+[![Build Status](https://travis-ci.org/bleacherreport/ecto_cursor_pagination.svg?branch=master)](https://travis-ci.org/bleacherreport/ecto_cursor_pagination)
+[![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/bleacherreport/plug_logger_json/blob/master/LICENSE)
 
 Cursor Pagination
 

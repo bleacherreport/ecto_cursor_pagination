@@ -25,21 +25,21 @@ defmodule Ecto.CursorPagination do
 
   def paginate(query, last_seen_id, "prev") do
     query
-    |> order_by(desc: ^cursor_id)
-    |> where([q], field(q, ^cursor_id) < ^last_seen_id)
+    |> order_by(desc: ^cursor_id())
+    |> where([q], field(q, ^cursor_id()) < ^last_seen_id)
     |> limit(@per_page)
   end
 
   def paginate(query, last_seen_id, "next") do
     query
-    |> order_by(asc: ^cursor_id)
-    |> where([q], field(q, ^cursor_id) > ^last_seen_id)
+    |> order_by(asc: ^cursor_id())
+    |> where([q], field(q, ^cursor_id()) > ^last_seen_id)
     |> limit(@per_page)
   end
 
   def paginate(query, _, _) do
     query
-    |> order_by(desc: ^cursor_id)
+    |> order_by(desc: ^cursor_id())
     |> limit(@per_page)
   end
 
