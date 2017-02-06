@@ -7,8 +7,6 @@ defmodule Ecto.CursorPagination do
 
   import Ecto.Query, only: [limit: 2, where: 3, order_by: 2]
 
-  @per_page Application.fetch_env!(:ecto_cursor_pagination, :per_page)
-
   @doc """
   Efficiently returns a maximum of `per_page` configured results.
 
@@ -27,21 +25,22 @@ defmodule Ecto.CursorPagination do
     query
     |> order_by(desc: ^cursor_id())
     |> where([q], field(q, ^cursor_id()) < ^last_seen_id)
-    |> limit(@per_page)
+    |> limit(^per_page())
   end
 
   def paginate(query, last_seen_id, "next") do
     query
     |> order_by(asc: ^cursor_id())
     |> where([q], field(q, ^cursor_id()) > ^last_seen_id)
-    |> limit(@per_page)
+    |> limit(^per_page())
   end
 
   def paginate(query, _, _) do
     query
     |> order_by(desc: ^cursor_id())
-    |> limit(@per_page)
+    |> limit(^per_page())
   end
 
   defp cursor_id, do: Application.fetch_env!(:ecto_cursor_pagination, :cursor_id)
+  defp per_page,  do: Application.fetch_env!(:ecto_cursor_pagination, :per_page)
 end
